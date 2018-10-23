@@ -143,25 +143,43 @@ class shiftdates:
 
     def sd(self,dates):
 
-        totalcount = 0
-        count1 = 0
-        count2 = 0
+        if numd==54:
 
-        ssdates=[]
+            totalcount = 0
+            count1 = 0
+            count2 = 0
 
-        while totalcount <self.numd:
-            if count1<4:
-                ssdates.append(dates[totalcount])
-                totalcount = totalcount+1
-                count1 = count1+1
-            elif count1 >=4:
-                totalcount=totalcount+4
-                count1=0
-                count2=count2+1
-            if count2 ==5:
-                break
+            ssdates=[]
 
-        return ssdates
+            while totalcount <self.numd:
+                if count1<4:
+                    ssdates.append(dates[totalcount])
+                    totalcount = totalcount+1
+                    count1 = count1+1
+                elif count1 >=4:
+                    totalcount=totalcount+4
+                    count1=0
+                    count2=count2+1
+                if count2 ==5:
+                    break
+
+            return ssdates
+
+        elif numd==42:
+
+            totalcount =0
+
+
+            while total <self.numd:
+                if totalcount <2:
+                    totalcount=totalcount+1
+                elif totalcount >2:
+                    ssdates.append(dates[totalcount])
+                elif totalcount>4 and totalcount<3:
+                    
+
+                
+            
 
 
 #class 
@@ -194,6 +212,7 @@ for x in d54.dbconn():
     for y in x:
         if y not in s54:
             s54.append(y)
+            
 ###Shift start - based on 42 or 54 day shift assignment #####
 strt42=[]
 strt54=[]
@@ -224,19 +243,38 @@ d54=shiftdates(54)
 wds54=d54.sd(pat54) # Returns dates - total of 20 - 4day gap over 40days
 wds42=d42.sd(pat42)
 
-days=1
-nights=2
-pat={}
-c=0
-for x in wds42:
-    if c <2:
-        pat[x]=days
-        c=c+1
-    elif c >=2:
-        pat[x]=nights
-        c=c+1
-    if c ==4:
-        c=0
+#### 54 day pattern ####
+def 54_day():
+    
+    days=1
+    nights=2
+    pat={}
+    c=0
+    for x in wds54:
+        if c <2:
+            pat[x]=days
+            c=c+1
+        elif c >=2:
+            pat[x]=nights
+            c=c+1
+        if c ==4:
+            c=0
+
+#### 42 Day pattern #####
+
+def 42_day():
+
+    days=1
+    nights=2
+    pat={}
+    c=0
+    for x in wds42:
+        
+    
+    
+
+        
+        
         
         
     
