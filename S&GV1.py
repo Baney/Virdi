@@ -1,5 +1,4 @@
 
-
 import pyodbc
 import time
 
@@ -143,7 +142,7 @@ class shiftdates:
 
     def sd(self,dates):
 
-        if numd==54:
+        if self.numd==54:
 
             totalcount = 0
             count1 = 0
@@ -165,17 +164,48 @@ class shiftdates:
 
             return ssdates
 
-        elif numd==42:
+        elif self.numd==42:
 
             totalcount =0
-
-
-            while total <self.numd:
+            ssdates = []
+            while totalcount <self.numd:
                 if totalcount <2:
                     totalcount=totalcount+1
-                elif totalcount >2:
+                if totalcount >=1 and totalcount<5 :
                     ssdates.append(dates[totalcount])
-                elif totalcount>4 and totalcount<3:
+                    totalcount=totalcount+1
+                if totalcount==5:
+                    totalcount=totalcount+3
+                if totalcount >=7 and totalcount<12:
+                    ssdates.append(dates[totalcount])
+                    totalcount=totalcount+1
+                if totalcount==12:
+                    totalcount=totalcount+2
+                if totalcount>=14 and totalcount<17:
+                    ssdates.append(dates[totalcount])
+                    totalcount=totalcount+1
+                if totalcount==17:
+                    totalcount=totalcount+4
+                if totalcount >=21 and totalcount <24:
+                    ssdates.append(dates[totalcount])
+                    totalcount=totalcount+1
+                if totalcount == 24:
+                    totalcount=totalcount+6
+                if totalcount>=30 and totalcount<34:
+                    ssdates.append(dates[totalcount])
+                    totalcount=totalcount+1
+                if totalcount ==34:
+                    totalcount=totalcount+3
+                if totalcount >=37 and totalcount<41:
+                    ssdates.append(dates[totalcount])
+                    totalcount=totalcount+1
+                elif totalcount==41:
+                    break
+                
+                    
+            return ssdates
+                    
+                    
                     
 
                 
@@ -244,7 +274,7 @@ wds54=d54.sd(pat54) # Returns dates - total of 20 - 4day gap over 40days
 wds42=d42.sd(pat42)
 
 #### 54 day pattern ####
-def 54_day():
+def f4_day():
     
     days=1
     nights=2
@@ -259,16 +289,17 @@ def 54_day():
             c=c+1
         if c ==4:
             c=0
+    print pat
 
 #### 42 Day pattern #####
 
-def 42_day():
+def f2_day():
 
     days=1
     nights=2
     pat={}
     c=0
-    for x in wds42:
+    #for x in wds42:
         
     
     
