@@ -299,7 +299,25 @@ def f2_day():
     nights=2
     pat={}
     c=0
-    #for x in wds42:
+    
+    for x in wds42:
+        if c <8:
+            pat[x]=nights
+            c=c+1
+        if c >= 8 and <14:
+            pat[x]=days
+            c=c+1
+        if c >=14:
+            pat[x]=days
+            c=c+1
+        elif c==42:
+            break
+
+        print pat
+            
+        
+            
+            
         
     
     
