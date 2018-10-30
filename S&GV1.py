@@ -1,4 +1,3 @@
-
 import pyodbc
 import time
 
@@ -289,7 +288,7 @@ def f4_day():
             c=c+1
         if c ==4:
             c=0
-    print pat
+    return pat
 
 #### 42 Day pattern #####
 
@@ -301,22 +300,41 @@ def f2_day():
     c=0
     
     for x in wds42:
-        if c <8:
+        if c <=8:
             pat[x]=nights
             c=c+1
-        if c >= 8 and <14:
+        if c > 8 and c <14:
             pat[x]=days
             c=c+1
         if c >=14:
             pat[x]=days
             c=c+1
-        elif c==42:
+        if c==24:
             break
 
-        print pat
+    return pat
             
-        
-            
+l42=[]      
+for x in s42:
+    for y in wds42:
+        l=[]
+        if y in f2_day():
+            l.append(str(x))
+            l.append(str(y))
+            l.append(str(f2_day()[y]))
+            l42.append(l)
+            l=[]
+
+l54=[]
+for x in s54:
+    for y in wds54:
+        l=[]
+        if y in f4_day():
+            l.append(str(x))
+            l.append(str(y))
+            l.append(str(f4_day()[y]))
+            l54.append(l)
+            l=[]
             
         
     
@@ -327,6 +345,27 @@ def f2_day():
         
         
     
+    
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+    
+
+    
+    
+
+
     
 
 
