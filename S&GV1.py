@@ -18,7 +18,7 @@ class db:
         sql = self.query
         curs = conn.cursor()
         if self.command2==1:
-            shift = curs.execute(sql)
+            curs.execute(sql)
             curs.commit
             
         if self.command == 1:
@@ -28,7 +28,7 @@ class db:
             result = curs.fetchone()
             return result
         elif self.command2==2:
-            shift = curs.execute(sql)
+            curs.execute(sql)
             curs.commit()
         conn.close()
 
