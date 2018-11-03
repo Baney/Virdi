@@ -19,15 +19,17 @@ class db:
         curs = conn.cursor()
         if self.command2==1:
             shift = curs.execute(sql)
+            curs.commit
+            
         if self.command == 1:
-            result = shift.fetchall()
+            result = curs.fetchall()
             return result
         elif self.command == 2:
-            result = shift.fetchone()
+            result = curs.fetchone()
             return result
         elif self.command2==2:
-            shift = curs.execute(shifts)
-            unis.commit()
+            shift = curs.execute(sql)
+            curs.commit()
         conn.close()
 
 class sort:
@@ -314,29 +316,42 @@ def f2_day():
 
     return pat
             
-l42=[]      
-for x in s42:
-    for y in wds42:
-        l=[]
-        if y in f2_day():
-            l.append(str(x))
-            l.append(str(y))
-            l.append(str(f2_day()[y]))
-            l42.append(l)
+
+def __42__():
+    l42=[]
+    for x in s42:
+        for y in wds42:
             l=[]
+            if y in f2_day():
+                l.append(str(x))
+                l.append(str(y))
+                l.append(str(f2_day()[y]))
+                l42.append(l)
+                l=[]
+    return l42
 
-l54=[]
-for x in s54:
-    for y in wds54:
-        l=[]
-        if y in f4_day():
-            l.append(str(x))
-            l.append(str(y))
-            l.append(str(f4_day()[y]))
-            l54.append(l)
+def __54__():
+    
+    l54=[]
+    for x in s54:
+        for y in wds54:
             l=[]
-            
-        
+            if y in f4_day():
+                l.append(str(x))
+                l.append(str(y))
+                l.append(str(f4_day()[y]))
+                l54.append(l)
+                l=[]
+    return l54
+for x in __54__():
+    L_UID, C_WorkDate, C_ShiftCode = x
+    d54c=db("insert into unisuser.wSpecialShift select "+C_WorkDate+",CAST("+L_UID+" as int),"+C_ShiftCode,4,2)
+    d54c.dbconn()
+
+for x in __42__():
+    L_UID, C_WorkDate, C_ShiftCode = x
+    d42c=db("insert into unisuser.wSpecialShift select "+C_WorkDate+",CAST("+L_UID+" as int),"+C_ShiftCode,4,2)
+    d42c.dbconn()
     
     
 
@@ -345,27 +360,6 @@ for x in s54:
         
         
     
-    
-
-
-
-
-
-
-
-
-
-
-    
-        
-    
-    
-    
-
-    
-    
-
-
     
 
 
